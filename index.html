@@ -91,10 +91,9 @@
     <p class="paragraph2">    ▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁</p>
 
     <!-- Song Player Section -->
-    <h1>Random Song Player</h1>
     <div id="song-info">
-        <p id="song-title"></p>
-        <p id="artist-name"></p>
+        <p class="paragraph2" id="song-title"></p>
+        <p class="paragraph2" id="artist-name"></p>
     </div>
     <!-- Invisible audio player to autoplay MP3 -->
     <audio id="audio-player" autoplay loop muted>
@@ -135,8 +134,8 @@
             audioPlayer.load(); // Reload the audio with the new source
 
             // Update the song info display
-            songTitle.textContent = `Song: ${randomSong.title}`;
-            artistName.textContent = `Artist: ${randomSong.artist}`;
+            songTitle.textContent = `${randomSong.title}`;
+            artistName.textContent = `by ${randomSong.artist}`;
         }
 
         // Load a random song when the page loads
