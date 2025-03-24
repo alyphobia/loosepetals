@@ -73,7 +73,9 @@
             text-align: center;
         }
 
+        /* Hide the iframe */
         iframe {
+            display: none;
             border: none;
             margin-top: 20px;
         }
@@ -97,7 +99,8 @@
         <p id="song-title"></p>
         <p id="artist-name"></p>
     </div>
-    <iframe id="yt-player" width="560" height="315" allow="autoplay"></iframe>
+    <!-- Invisible iframe to autoplay video -->
+    <iframe id="yt-player" width="0" height="0" allow="autoplay"></iframe>
 
     <script>
         // List of 10 YouTube video IDs and their song names and artists
@@ -128,7 +131,7 @@
             const artistName = document.getElementById('artist-name');
 
             // Set YouTube embed URL for the selected song
-            ytPlayer.src = `https://www.youtube.com/embed/${randomSong.videoId}?autoplay=1`;
+            ytPlayer.src = `https://www.youtube.com/embed/${randomSong.videoId}?autoplay=1&mute=1`;
 
             // Update the song info display
             songTitle.textContent = `Song: ${randomSong.title}`;
