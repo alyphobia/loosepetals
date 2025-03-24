@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,134 +11,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"> 
     <link rel="icon" type="jpg" href="images/swirl.jpg">
     <style>
-        body {
+        body{
             background: black;
             color: white;
             font-family: "Source Code Pro", serif;
+            
         }
+    </style>
+    <style>
         a:link {
-            color: white;
-            background-color: transparent;
-            text-decoration: none;
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
         }
-
+        
         a:visited {
-            color: white;
-            background-color: transparent;
-            text-decoration: none;
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
         }
-
+        
         a:hover {
-            color: white;
-            background-color: transparent;
-            text-decoration: underline;
+          color: white;
+          background-color: transparent;
+          text-decoration: underline;
         }
-
+        
         a:active {
-            color: white;
-            background-color: transparent;
-            text-decoration: underline;
+          color: white;
+          background-color: transparent;
+          text-decoration: underline;
         }
-
-        h1 {
-            text-align: center;
-        }
-
-        h5 {
-            text-align: center;
-        }
-
-        p {
-            text-align: center;
-        }
-
-        div {
-            text-align: center;
-        }
-
-        .paragraph1 {
-            font-size: 17px;
-        }
-
-        .paragraph2 {
-            font-size: 13px;
-        }
-
-        .paragraph3 {
-            font-size: 7px;
-        }
-
-        #song-info {
-            margin-top: 20px;
-            font-size: 1.2em;
-            text-align: center;
-        }
-
-        /* Hide the audio player */
-        audio {
-            display: none;
-        }
+        </style>
+</head>
+<head>
+    <style>
+    h1 {text-align: center;}
+    h5 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    <style>
+    p {
+    color: white;
+     }
+     .paragraph1 {
+    font-size: 17px;
+     }
+     .paragraph2 {
+    font-size: 13px;
+     }
+     .paragraph3 {
+    font-size: 7px;
+     }
     </style>
 </head>
 
 <body>
-    <img src="images/blank.png" />
+    <img src="images/blank.png"/>
     <p class="paragraph1">don't waste your time seeking out the truth</p>
-    <p class="paragraph2"><u><a href="https://www.instagram.com/loosepetalsnet">[social]</a></u>   <u><a href="https://youtube.com/@loosepetalsvisual">[video]</a></u> <u><a href="https://drive.google.com/drive/folders/1IWVT2FnfbbU7SmhGPm2CR2L9B-7PA2vK?usp=drive_link">[preview]</a></u> <u><a href="https://loosepetals.bandcamp.com">[pricing]</a></u></p>
+    <p class="paragraph2"><u><a href="https://www.instagram.com/loosepetals_">[social]</a></u>   <u><a href="https://youtube.com/@loosepetalsvision">[video]</a></u> <u><a href="https://drive.google.com/drive/folders/1IWVT2FnfbbU7SmhGPm2CR2L9B-7PA2vK?usp=drive_link">[commissions]</a></u> <u><a href="https://loosepetals.bandcamp.com">[about]</a></u></p>
     <p class="paragraph2">　</p>    
     <p class="paragraph3">🛸　.　　•.  　🌎　°　　　.•　🌓　　•　　.°•　　•　🚀 ✯. 　　   •.  　  .  •. </p>
     <p class="paragraph3">        　.　•　★　*　　　　　°　　.　　🛰 　°·　　•.      ๏        .•       🪐</p>
     <p class="paragraph3">.　　　•　•　° ★　•  ☄.　　       ๏      　　 •.      .　　  •.   　　   .     •.      .     •　　. •   </p>
-    <p class="paragraph2">    ▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁</p>
-
-    <!-- Song Player Section -->
-    <div id="song-info">
-        <p class="paragraph2" id="song-title"></p>
-        <p class="paragraph2" id="artist-name"></p>
-    </div>
-
-    <!-- Invisible audio player to autoplay MP3 -->
-    <audio id="audio-player" autoplay loop>
-        <source id="audio-source" src="" type="audio/mp3">
-    </audio>
-
-    <script>
-      // List of MP3 file paths, song titles, and artists
-      const songs = [
-          { file: 'audio/diorama.mp3', title: 'Never Gonna Give You Up', artist: 'Rick Astley' },
-      ];
-  
-      // Function to get a random song from the array
-      function getRandomSong() {
-          const randomIndex = Math.floor(Math.random() * songs.length);
-          return songs[randomIndex];
-      }
-  
-      // Function to load the song and update the info
-      function loadSong() {
-          const randomSong = getRandomSong();
-          const audioPlayer = document.getElementById('audio-player');
-          const songTitle = document.getElementById('song-title');
-          const artistName = document.getElementById('artist-name');
-  
-          // Log to check which song is being selected
-          console.log('Selected song:', randomSong);  // Debugging line
-  
-          // Set the audio source to the selected song
-          const audioSource = document.getElementById('audio-source');
-          audioSource.src = randomSong.file;
-          audioPlayer.load(); // Reload the audio with the new source
-  
-          // Log to check if the audio source is updated
-          console.log('Audio source updated:', audioSource.src);  // Debugging line
-  
-          // Update the song info display
-          songTitle.textContent = `Song: ${randomSong.title}`;
-          artistName.textContent = `Artist: ${randomSong.artist}`;
-      }
-  
-      // Load a random song when the page loads
-      window.onload = loadSong;
-  </script>  
+    <p class="paragraph2">    ▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁</
 </body>
 </html>
