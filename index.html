@@ -10,69 +10,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"> 
     <link rel="icon" type="jpg" href="images/swirl.jpg">
     <style>
-        body{
+        body {
             background: black;
             color: white;
             font-family: "Source Code Pro", serif;
-            
         }
-    </style>
-    <style>
         a:link {
-          color: white;
-          background-color: transparent;
-          text-decoration: none;
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
         }
-        
+
         a:visited {
-          color: white;
-          background-color: transparent;
-          text-decoration: none;
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
         }
-        
+
         a:hover {
-          color: white;
-          background-color: transparent;
-          text-decoration: underline;
+            color: white;
+            background-color: transparent;
+            text-decoration: underline;
         }
-        
+
         a:active {
-          color: white;
-          background-color: transparent;
-          text-decoration: underline;
+            color: white;
+            background-color: transparent;
+            text-decoration: underline;
         }
-        </style>
-</head>
-<head>
-    <style>
-    h1 {text-align: center;}
-    h5 {text-align: center;}
-    p {text-align: center;}
-    div {text-align: center;}
-    <style>
-    p {
-    color: white;
-     }
-     .paragraph1 {
-    font-size: 17px;
-     }
-     .paragraph2 {
-    font-size: 13px;
-     }
-     .paragraph3 {
-    font-size: 7px;
-     }
+
+        h1 {
+            text-align: center;
+        }
+
+        h5 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        .paragraph1 {
+            font-size: 17px;
+        }
+
+        .paragraph2 {
+            font-size: 13px;
+        }
+
+        .paragraph3 {
+            font-size: 7px;
+        }
+
+        #song-info {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        iframe {
+            border: none;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 
 <body>
-    <img src="images/blank.png"/>
+    <img src="images/blank.png" />
     <p class="paragraph1">don't waste your time seeking out the truth</p>
-    <p class="paragraph2"><u><a href="https://www.instagram.com/loosepetalsmusic">[social]</a></u>   <u><a href="https://youtube.com/@loosepetals">[video]</a></u> <u><a href="https://loosepetals.bandcamp.com">[music]</a></u></p>
+    <p class="paragraph2"><u><a href="https://www.instagram.com/loosepetalsnet">[social]</a></u>   <u><a href="https://youtube.com/@loosepetalsvisual">[video]</a></u> <u><a href="https://drive.google.com/drive/folders/1IWVT2FnfbbU7SmhGPm2CR2L9B-7PA2vK?usp=drive_link">[preview]</a></u> <u><a href="https://loosepetals.bandcamp.com">[pricing]</a></u></p>
     <p class="paragraph2">　</p>    
     <p class="paragraph3">🛸　.　　•.  　🌎　°　　　.•　🌓　　•　　.°•　　•　🚀 ✯. 　　   •.  　  .  •. </p>
     <p class="paragraph3">        　.　•　★　*　　　　　°　　.　　🛰 　°·　　•.      ๏        .•       🪐</p>
     <p class="paragraph3">.　　　•　•　° ★　•  ☄.　　       ๏      　　 •.      .　　  •.   　　   .     •.      .     •　　. •   </p>
-    <p class="paragraph2">    ▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁</
+    <p class="paragraph2">    ▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁▁▁▂▃▄▅▆▇▇▆▅▄▃▂▁▁</p>
+
+    <!-- Song Player Section -->
+    <h1>Random Song Player</h1>
+    <div id="song-info">
+        <p id="song-title"></p>
+        <p id="artist-name"></p>
+    </div>
+    <iframe id="yt-player" width="560" height="315" allow="autoplay"></iframe>
+
+    <script>
+        // List of 10 YouTube video IDs and their song names and artists
+        const songs = [
+            { videoId: 'dQw4w9WgXcQ', title: 'Never Gonna Give You Up', artist: 'Rick Astley' },
+            { videoId: '3JZ_D3ELwXQ', title: 'Faded', artist: 'Alan Walker' },
+            { videoId: 'kJQP7kiw5Fk', title: 'Despacito', artist: 'Luis Fonsi ft. Daddy Yankee' },
+            { videoId: '9bZkp7q19f0', title: 'Gangnam Style', artist: 'PSY' },
+            { videoId: 'IcrbM1l_BoI', title: 'All of Me', artist: 'John Legend' },
+            { videoId: 'lY2H2ZP3Jt8', title: 'Shape of You', artist: 'Ed Sheeran' },
+            { videoId: 'IuSGLcFjK0E', title: 'Blinding Lights', artist: 'The Weeknd' },
+            { videoId: '6JtPft6W2R8', title: 'Uptown Funk', artist: 'Mark Ronson ft. Bruno Mars' },
+            { videoId: '2Vv-BfVoq4g', title: 'Perfect', artist: 'Ed Sheeran' },
+            { videoId: 'O-zpOMYRi0w', title: 'Happy', artist: 'Pharrell Williams' }
+        ];
+
+        // Function to get a random song from the array
+        function getRandomSong() {
+            const randomIndex = Math.floor(Math.random() * songs.length);
+            return songs[randomIndex];
+        }
+
+        // Function to load the song and update the info
+        function loadSong() {
+            const randomSong = getRandomSong();
+            const ytPlayer = document.getElementById('yt-player');
+            const songTitle = document.getElementById('song-title');
+            const artistName = document.getElementById('artist-name');
+
+            // Set YouTube embed URL for the selected song
+            ytPlayer.src = `https://www.youtube.com/embed/${randomSong.videoId}?autoplay=1`;
+
+            // Update the song info display
+            songTitle.textContent = `Song: ${randomSong.title}`;
+            artistName.textContent = `Artist: ${randomSong.artist}`;
+        }
+
+        // Load a random song when the page loads
+        window.onload = loadSong;
+    </script>
 </body>
 </html>
