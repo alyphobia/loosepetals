@@ -73,13 +73,10 @@
             text-align: center;
         }
 
-        /* Hide the iframe */
-        iframe {
+        /* Hide the audio player */
+        audio {
             display: none;
-            border: none;
-            margin-top: 20px;
         }
-
     </style>
 </head>
 
@@ -99,22 +96,24 @@
         <p id="song-title"></p>
         <p id="artist-name"></p>
     </div>
-    <!-- Invisible iframe to autoplay video -->
-    <iframe id="yt-player" width="0" height="0" allow="autoplay"></iframe>
+    <!-- Invisible audio player to autoplay MP3 -->
+    <audio id="audio-player" autoplay loop muted>
+        <source id="audio-source" src="" type="audio/mp3">
+    </audio>
 
     <script>
-        // List of 10 YouTube video IDs and their song names and artists
+        // List of 10 MP3 file paths, song titles, and artists
         const songs = [
-            { videoId: 'dQw4w9WgXcQ', title: 'Never Gonna Give You Up', artist: 'Rick Astley' },
-            { videoId: '3JZ_D3ELwXQ', title: 'Faded', artist: 'Alan Walker' },
-            { videoId: 'kJQP7kiw5Fk', title: 'Despacito', artist: 'Luis Fonsi ft. Daddy Yankee' },
-            { videoId: '9bZkp7q19f0', title: 'Gangnam Style', artist: 'PSY' },
-            { videoId: 'IcrbM1l_BoI', title: 'All of Me', artist: 'John Legend' },
-            { videoId: 'lY2H2ZP3Jt8', title: 'Shape of You', artist: 'Ed Sheeran' },
-            { videoId: 'IuSGLcFjK0E', title: 'Blinding Lights', artist: 'The Weeknd' },
-            { videoId: '6JtPft6W2R8', title: 'Uptown Funk', artist: 'Mark Ronson ft. Bruno Mars' },
-            { videoId: '2Vv-BfVoq4g', title: 'Perfect', artist: 'Ed Sheeran' },
-            { videoId: 'O-zpOMYRi0w', title: 'Happy', artist: 'Pharrell Williams' }
+            { file: 'audio/diorama.mp3', title: 'Diorama', artist: 'Loose Petals' },
+            { file: 'audio/faded.mp3', title: 'Faded', artist: 'Alan Walker' },
+            { file: 'audio/despacito.mp3', title: 'Despacito', artist: 'Luis Fonsi ft. Daddy Yankee' },
+            { file: 'audio/gangnam_style.mp3', title: 'Gangnam Style', artist: 'PSY' },
+            { file: 'audio/all_of_me.mp3', title: 'All of Me', artist: 'John Legend' },
+            { file: 'audio/shape_of_you.mp3', title: 'Shape of You', artist: 'Ed Sheeran' },
+            { file: 'audio/blinding_lights.mp3', title: 'Blinding Lights', artist: 'The Weeknd' },
+            { file: 'audio/uptown_funk.mp3', title: 'Uptown Funk', artist: 'Mark Ronson ft. Bruno Mars' },
+            { file: 'audio/perfect.mp3', title: 'Perfect', artist: 'Ed Sheeran' },
+            { file: 'audio/happy.mp3', title: 'Happy', artist: 'Pharrell Williams' }
         ];
 
         // Function to get a random song from the array
@@ -126,12 +125,14 @@
         // Function to load the song and update the info
         function loadSong() {
             const randomSong = getRandomSong();
-            const ytPlayer = document.getElementById('yt-player');
+            const audioPlayer = document.getElementById('audio-player');
             const songTitle = document.getElementById('song-title');
             const artistName = document.getElementById('artist-name');
 
-            // Set YouTube embed URL for the selected song
-            ytPlayer.src = `https://www.youtube.com/embed/${randomSong.videoId}?autoplay=1&mute=1`;
+            // Set the audio source to the selected song
+            const audioSource = document.getElementById('audio-source');
+            audioSource.src = randomSong.file;
+            audioPlayer.load(); // Reload the audio with the new source
 
             // Update the song info display
             songTitle.textContent = `Song: ${randomSong.title}`;
