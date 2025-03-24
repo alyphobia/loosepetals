@@ -102,36 +102,42 @@
     </audio>
 
     <script>
-        // List of 10 MP3 file paths, song titles, and artists
-        const songs = [
-            { file: 'audio/diorama.mp3', title: 'diorama', artist: 'yves' },
-        ];
-
-        // Function to get a random song from the array
-        function getRandomSong() {
-            const randomIndex = Math.floor(Math.random() * songs.length);
-            return songs[randomIndex];
-        }
-
-        // Function to load the song and update the info
-        function loadSong() {
-            const randomSong = getRandomSong();
-            const audioPlayer = document.getElementById('audio-player');
-            const songTitle = document.getElementById('song-title');
-            const artistName = document.getElementById('artist-name');
-
-            // Set the audio source to the selected song
-            const audioSource = document.getElementById('audio-source');
-            audioSource.src = randomSong.file;
-            audioPlayer.load(); // Reload the audio with the new source
-
-            // Update the song info display
-            songTitle.textContent = ` ${randomSong.title}`;
-            artistName.textContent = `by ${randomSong.artist}`;
-        }
-
-        // Load a random song when the page loads
-        window.onload = loadSong;
-    </script>
+      // List of MP3 file paths, song titles, and artists
+      const songs = [
+          { file: 'audio/diorama.mp3', title: 'Never Gonna Give You Up', artist: 'Rick Astley' },
+      ];
+  
+      // Function to get a random song from the array
+      function getRandomSong() {
+          const randomIndex = Math.floor(Math.random() * songs.length);
+          return songs[randomIndex];
+      }
+  
+      // Function to load the song and update the info
+      function loadSong() {
+          const randomSong = getRandomSong();
+          const audioPlayer = document.getElementById('audio-player');
+          const songTitle = document.getElementById('song-title');
+          const artistName = document.getElementById('artist-name');
+  
+          // Log to check which song is being selected
+          console.log('Selected song:', randomSong);  // Debugging line
+  
+          // Set the audio source to the selected song
+          const audioSource = document.getElementById('audio-source');
+          audioSource.src = randomSong.file;
+          audioPlayer.load(); // Reload the audio with the new source
+  
+          // Log to check if the audio source is updated
+          console.log('Audio source updated:', audioSource.src);  // Debugging line
+  
+          // Update the song info display
+          songTitle.textContent = `Song: ${randomSong.title}`;
+          artistName.textContent = `Artist: ${randomSong.artist}`;
+      }
+  
+      // Load a random song when the page loads
+      window.onload = loadSong;
+  </script>  
 </body>
 </html>
